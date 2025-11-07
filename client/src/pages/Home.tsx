@@ -40,7 +40,7 @@ export default function Home() {
             <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
               <span className="text-accent-foreground font-bold text-sm">AB</span>
             </div>
-            <span className="font-bold text-lg hidden sm:inline">Agri Brazil</span>
+            <span className="font-bold text-lg hidden sm:inline">Agri Brazil Success</span>
           </div>
 
           <nav className="hidden md:flex items-center gap-8">
