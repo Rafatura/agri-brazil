@@ -60,9 +60,11 @@ export default function Home() {
 
           <div className="flex items-center gap-4">
             {isAuthenticated ? (
-              <div className="text-sm">{user?.name || "User"}</div>
+              <Button size="sm" variant="outline">
+                {user?.name || "Account"}
+              </Button>
             ) : (
-              <Button asChild size="sm" variant="outline">
+              <Button size="sm" asChild>
                 <a href={getLoginUrl()}>Sign In</a>
               </Button>
             )}
@@ -73,23 +75,35 @@ export default function Home() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="min-h-screen flex items-center justify-center pt-20 px-4"
+        className="min-h-screen flex items-center justify-center pt-20 px-4 relative overflow-hidden"
+        style={{
+          backgroundImage: 'url(/hero-background-grain-field.webp)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+        }}
       >
-        <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in relative z-10">
           <div className="space-y-4">
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight">
               The Future of{" "}
               <span className="bg-gradient-to-r from-accent to-accent/70 bg-clip-text text-transparent">
-                Agricultural Investment
+                Agricultural
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-accent to-accent/70 bg-clip-text text-transparent">
+                Investment
               </span>
             </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Bringing the $2.7 Trillion Agricultural Market On-Chain. Tokenization
-              of agricultural assets for enhanced access and liquidity.
+            <p className="text-lg text-gray-200 max-w-2xl mx-auto">
+              Bringing the $2.7 Trillion Agricultural Market On-Chain. Tokenization of
+              agricultural assets for enhanced access and liquidity.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-accent hover:bg-accent/90">
               Get Started
             </Button>
@@ -99,43 +113,40 @@ export default function Home() {
           </div>
 
           {/* Scroll Indicator */}
-          <div className="pt-12 animate-bounce">
-            <ChevronDown className="w-6 h-6 mx-auto text-muted-foreground" />
+          <div className="pt-12 animate-bounce relative z-10">
+            <ChevronDown className="w-6 h-6 mx-auto text-white" />
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 bg-card/30">
+      <section id="about" className="py-20 px-4">
         <div className="container max-w-4xl mx-auto">
-          <div className="text-center space-y-6">
+          <div className="text-center space-y-6 mb-12">
             <h2 className="text-4xl md:text-5xl font-bold">
               Why Choose Agri Brazil Success?
             </h2>
             <p className="text-lg text-muted-foreground">
-              Agri Brazil Success is not merely an investment opportunity; it's a gateway
-              to a thriving agricultural community poised for exceptional growth. Our
-              emphasis on high-quality grain production, combined with strategic insights
-              into market trends, positions us as leaders in the agro-investment landscape.
+              Agri Brazil Success is not merely an investment opportunity; it's a gateway to a
+              thriving agricultural community poised for exceptional growth. Our emphasis on
+              high-quality grain production, combined with strategic insights into market trends,
+              positions us as leaders in the agro-investment landscape.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 title: "Market Analysis",
-                description:
-                  "In-depth insights into grain market trends and forecasts.",
+                description: "In-depth insights into grain market trends and forecasts.",
               },
               {
                 title: "Risk Management",
-                description:
-                  "Strategies to mitigate climate-related risks and ensure stability.",
+                description: "Strategies to mitigate climate-related risks and ensure stability.",
               },
               {
                 title: "Expert Guidance",
-                description:
-                  "Expert advice on maximizing returns and optimizing investments.",
+                description: "Expert advice on maximizing returns and optimizing investments.",
               },
             ].map((item, idx) => (
               <div
@@ -166,31 +177,44 @@ export default function Home() {
                 title: "Investment Guidance",
                 description:
                   "Expert advice on maximizing returns and optimizing investments in the grain market.",
+                image: "/investment-guidance.jpg",
               },
               {
                 title: "Sustainability Initiatives",
                 description:
                   "Support for eco-friendly practices and crop diversification strategies.",
+                image: "/risk-management.jpg",
               },
               {
                 title: "Financial Planning",
                 description:
                   "Comprehensive strategies for effective agricultural investment and portfolio management.",
+                image: "/market-analysis.jpg",
               },
               {
                 title: "Networking Opportunities",
                 description:
                   "Connect with industry experts and fellow investors in our community.",
+                image: "/investment-guidance.jpg",
               },
             ].map((service, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-lg bg-gradient-to-br from-accent/5 to-transparent border border-accent/20 hover:border-accent/50 transition-all duration-300"
+                className="overflow-hidden rounded-lg bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 flex flex-col"
               >
-                <h3 className="text-2xl font-semibold mb-3 text-accent">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground">{service.description}</p>
+                <div className="h-48 overflow-hidden bg-muted">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-8 flex-1 flex flex-col">
+                  <h3 className="text-2xl font-semibold mb-3 text-accent">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground">{service.description}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -207,20 +231,22 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                name: "Sarah Johnson",
-                text: "Investing with Agri Brazil Success transformed my portfolio! Their insights into the grain market are invaluable, and I feel confident in my investment choices.",
+                quote:
+                  "Investing with Agri Brazil Success transformed my portfolio! Their insights into the grain market are invaluable, and I feel confident in my investment choices.",
+                author: "Sarah Johnson",
               },
               {
-                name: "João Silva",
-                text: "The team's expertise and dedication to sustainable agriculture is impressive. I've seen consistent returns and growth in my investments.",
+                quote:
+                  "The team's expertise and dedication to sustainable agriculture is impressive. I have seen consistent returns and growth in my investments.",
+                author: "João Silva",
               },
             ].map((testimonial, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-lg bg-card border border-border hover:border-accent/50 transition-all"
+                className="p-8 rounded-lg bg-card border border-border hover:border-accent/50 transition-all duration-300"
               >
-                <p className="text-muted-foreground mb-4">"{testimonial.text}"</p>
-                <p className="font-semibold text-accent">{testimonial.name}</p>
+                <p className="text-muted-foreground mb-4 italic">"{testimonial.quote}"</p>
+                <p className="font-semibold text-accent">{testimonial.author}</p>
               </div>
             ))}
           </div>
@@ -235,34 +261,27 @@ export default function Home() {
             <p className="text-lg text-muted-foreground">
               Contact us for more information about investment opportunities.
             </p>
+            <p className="text-2xl font-semibold text-accent">+55 54 99618 2303</p>
           </div>
 
-          <div className="space-y-6">
-            <div className="text-center">
-              <p className="text-2xl font-semibold text-accent">+55 54 99618 2303</p>
-            </div>
-
-            <form className="space-y-4">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-accent focus:outline-none transition-colors"
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-accent focus:outline-none transition-colors"
-              />
-              <textarea
-                placeholder="Your Message"
-                rows={5}
-                className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-accent focus:outline-none transition-colors resize-none"
-              />
-              <Button className="w-full bg-accent hover:bg-accent/90">
-                Send Message
-              </Button>
-            </form>
-          </div>
+          <form className="space-y-4">
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-accent focus:outline-none transition-colors"
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-accent focus:outline-none transition-colors"
+            />
+            <textarea
+              placeholder="Your Message"
+              rows={5}
+              className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-accent focus:outline-none transition-colors resize-none"
+            />
+            <Button className="w-full bg-accent hover:bg-accent/90">Send Message</Button>
+          </form>
         </div>
       </section>
 

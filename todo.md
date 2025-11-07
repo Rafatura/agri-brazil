@@ -23,6 +23,12 @@
 - [x] Efeitos de hover nos botões e links
 - [x] Animações de scroll para elementos
 
+## Imagens & Mídia
+
+- [x] Imagem de fundo do hero section (campo de grãos)
+- [x] Imagens para cards de serviços (Investment Guidance, Risk Management, Market Analysis)
+- [x] Integração de imagens nos componentes
+
 ## Integração de IA
 
 - [x] Configurar API Manus/LLM
@@ -47,6 +53,6 @@
 
 ## Deployment
 
-- [ ] Criar checkpoint antes de publicar
+- [ ] Criar checkpoint final antes de publicar
 - [ ] Publicar no ambiente de produção
 - [ ] Configurar domínio customizado (opcional)
