@@ -89,11 +89,21 @@ export default function Home() {
           <div className="space-y-4">
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight">
               The Future of{" "}
-              <span className="bg-gradient-to-r from-accent to-accent/70 bg-clip-text text-transparent">
+              <span style={{
+                background: 'linear-gradient(to right, #0075FF, #3FFF8C)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}>
                 Agricultural
               </span>
               <br />
-              <span className="bg-gradient-to-r from-accent to-accent/70 bg-clip-text text-transparent">
+              <span style={{
+                background: 'linear-gradient(to right, #0075FF, #3FFF8C)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}>
                 Investment
               </span>
             </h1>
@@ -104,10 +114,25 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-accent hover:bg-accent/90">
+            <Button size="lg" style={{
+              background: 'linear-gradient(to right, #0075FF, #3FFF8C)',
+              border: 'none',
+              color: '#0D0D0D',
+              fontWeight: 'bold',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.opacity = '0.9';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.opacity = '1';
+            }}
+            >
               Get Started
             </Button>
-            <Button size="lg" variant="outline">
+            <Button size="lg" variant="outline" style={{
+              borderImage: 'linear-gradient(to right, #0075FF, #3FFF8C) 1',
+              borderWidth: '2px',
+            }}>
               Learn More
             </Button>
           </div>
@@ -210,7 +235,12 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-8 flex-1 flex flex-col">
-                  <h3 className="text-2xl font-semibold mb-3 text-accent">
+                  <h3 className="text-2xl font-semibold mb-3" style={{
+                    background: 'linear-gradient(to right, #0075FF, #3FFF8C)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}>
                     {service.title}
                   </h3>
                   <p className="text-muted-foreground">{service.description}</p>
@@ -257,11 +287,21 @@ export default function Home() {
       <section id="contact" className="py-20 px-4">
         <div className="container max-w-2xl mx-auto">
           <div className="text-center space-y-6 mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold">Get in Touch</h2>
+            <h2 className="text-4xl md:text-5xl font-bold" style={{
+              background: 'linear-gradient(to right, #0075FF, #3FFF8C)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}>Get in Touch</h2>
             <p className="text-lg text-muted-foreground">
               Contact us for more information about investment opportunities.
             </p>
-            <p className="text-2xl font-semibold text-accent">+55 54 99618 2303</p>
+            <p className="text-2xl font-semibold" style={{
+              background: 'linear-gradient(to right, #0075FF, #3FFF8C)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}>+55 54 99618 2303</p>
           </div>
 
           <form className="space-y-4">
@@ -280,7 +320,19 @@ export default function Home() {
               rows={5}
               className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:border-accent focus:outline-none transition-colors resize-none"
             />
-            <Button className="w-full bg-accent hover:bg-accent/90">Send Message</Button>
+            <Button className="w-full" style={{
+              background: 'linear-gradient(to right, #0075FF, #3FFF8C)',
+              border: 'none',
+              color: '#0D0D0D',
+              fontWeight: 'bold',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.opacity = '0.9';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.opacity = '1';
+            }}
+            >Send Message</Button>
           </form>
         </div>
       </section>
