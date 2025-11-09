@@ -1,13 +1,14 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { getLoginUrl } from "@/const";
-import { ChevronDown } from "lucide-react";
+import { getLoginUrl, APP_LOGO, COMPANY_PHONE } from "@/const";
+import { ChevronDown, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import ChatBot from "@/components/ChatBot";
 
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
   const [scrolled, setScrolled] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,10 +37,8 @@ export default function Home() {
         }`}
       >
         <div className="container flex items-center justify-between py-4">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-              <span className="text-accent-foreground font-bold text-sm">AB</span>
-            </div>
+          <div className="flex items-center gap-3">
+            <img src={APP_LOGO} alt="Logo" className="w-10 h-10" />
             <span className="font-bold text-lg hidden sm:inline">Agri Brazil Success</span>
           </div>
 
@@ -50,8 +49,8 @@ export default function Home() {
             <a href="#services" className="text-sm hover:text-accent transition-colors">
               Services
             </a>
-            <a href="#testimonials" className="text-sm hover:text-accent transition-colors">
-              Testimonials
+            <a href="#projects" className="text-sm hover:text-accent transition-colors">
+              Projects
             </a>
             <a href="#contact" className="text-sm hover:text-accent transition-colors">
               Contact
@@ -144,8 +143,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 px-4">
+      {/* About Section - Dark Background */}
+      <section id="about" className="py-20 px-4 bg-black/50">
         <div className="container max-w-4xl mx-auto">
           <div className="text-center space-y-6 mb-12">
             <h2 className="text-4xl md:text-5xl font-bold">
@@ -153,9 +152,7 @@ export default function Home() {
             </h2>
             <p className="text-lg text-muted-foreground">
               Agri Brazil Success is not merely an investment opportunity; it's a gateway to a
-              thriving agricultural community poised for exceptional growth. Our emphasis on
-              high-quality grain production, combined with strategic insights into market trends,
-              positions us as leaders in the agro-investment landscape.
+              thriving agricultural community poised for exceptional growth.
             </p>
           </div>
 
@@ -178,7 +175,14 @@ export default function Home() {
                 key={idx}
                 className="p-6 rounded-lg bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10"
               >
-                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                <h3 className="text-xl font-semibold mb-3" style={{
+                  background: 'linear-gradient(to right, #0075FF, #3FFF8C)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}>
+                  {item.title}
+                </h3>
                 <p className="text-muted-foreground">{item.description}</p>
               </div>
             ))}
@@ -186,97 +190,78 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-20 px-4">
-        <div className="container max-w-4xl mx-auto">
+      {/* Projects/Videos Section */}
+      <section id="projects" className="py-20 px-4">
+        <div className="container max-w-5xl mx-auto">
           <div className="text-center space-y-6 mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold">Our Offerings</h2>
+            <h2 className="text-4xl md:text-5xl font-bold">Our Projects</h2>
             <p className="text-lg text-muted-foreground">
-              Tailored investment strategies to enhance your agricultural portfolio
+              Explore our latest agricultural investment initiatives and success stories
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          {/* Video Grid */}
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
             {[
               {
-                title: "Investment Guidance",
-                description:
-                  "Expert advice on maximizing returns and optimizing investments in the grain market.",
-                image: "/investment-guidance.jpg",
+                title: "ABS - Agricultural Blockchain Solutions",
+                video: "/abs-video.mp4",
+                description: "Innovative blockchain solutions for agricultural investment and tokenization.",
               },
               {
-                title: "Sustainability Initiatives",
-                description:
-                  "Support for eco-friendly practices and crop diversification strategies.",
-                image: "/risk-management.jpg",
+                title: "Tokenização da Agricultura Familiar no Brasil",
+                video: "/tokenization-video.mp4",
+                description: "Family farming tokenization strategies in Brazil.",
               },
-              {
-                title: "Financial Planning",
-                description:
-                  "Comprehensive strategies for effective agricultural investment and portfolio management.",
-                image: "/market-analysis.jpg",
-              },
-              {
-                title: "Networking Opportunities",
-                description:
-                  "Connect with industry experts and fellow investors in our community.",
-                image: "/investment-guidance.jpg",
-              },
-            ].map((service, idx) => (
+            ].map((project, idx) => (
               <div
                 key={idx}
-                className="overflow-hidden rounded-lg bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 flex flex-col"
+                className="group relative overflow-hidden rounded-lg bg-card border border-border hover:border-accent/50 transition-all duration-300 cursor-pointer"
+                onClick={() => setSelectedVideo(project.video)}
               >
-                <div className="h-48 overflow-hidden bg-muted">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                <div className="relative h-64 bg-muted overflow-hidden">
+                  <video
+                    src={project.video}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
+                    <Play className="w-16 h-16 text-accent group-hover:scale-110 transition-transform" fill="#3FFF8C" />
+                  </div>
                 </div>
-                <div className="p-8 flex-1 flex flex-col">
-                  <h3 className="text-2xl font-semibold mb-3" style={{
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2" style={{
                     background: 'linear-gradient(to right, #0075FF, #3FFF8C)',
                     backgroundClip: 'text',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}>
-                    {service.title}
+                    {project.title}
                   </h3>
-                  <p className="text-muted-foreground">{service.description}</p>
+                  <p className="text-muted-foreground">{project.description}</p>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 px-4 bg-card/30">
-        <div className="container max-w-4xl mx-auto">
-          <div className="text-center space-y-6 mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold">What Our Investors Say</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
+          {/* Image Gallery */}
+          <div className="grid md:grid-cols-3 gap-6">
             {[
-              {
-                quote:
-                  "Investing with Agri Brazil Success transformed my portfolio! Their insights into the grain market are invaluable, and I feel confident in my investment choices.",
-                author: "Sarah Johnson",
-              },
-              {
-                quote:
-                  "The team's expertise and dedication to sustainable agriculture is impressive. I have seen consistent returns and growth in my investments.",
-                author: "João Silva",
-              },
-            ].map((testimonial, idx) => (
+              { image: "/grain-field-1.png", title: "Grain Fields" },
+              { image: "/grain-field-2.png", title: "Agricultural Land" },
+              { image: "/farm-event.png", title: "Farm Event" },
+            ].map((item, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-lg bg-card border border-border hover:border-accent/50 transition-all duration-300"
+                className="overflow-hidden rounded-lg bg-muted border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10"
               >
-                <p className="text-muted-foreground mb-4 italic">"{testimonial.quote}"</p>
-                <p className="font-semibold text-accent">{testimonial.author}</p>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                />
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold text-accent">{item.title}</h3>
+                </div>
               </div>
             ))}
           </div>
@@ -301,7 +286,7 @@ export default function Home() {
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-            }}>+55 54 99618 2303</p>
+            }}>{COMPANY_PHONE}</p>
           </div>
 
           <form className="space-y-4">
@@ -360,6 +345,23 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Video Modal */}
+      {selectedVideo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setSelectedVideo(null)}
+        >
+          <div className="w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
+            <video
+              src={selectedVideo}
+              controls
+              autoPlay
+              className="w-full rounded-lg"
+            />
+          </div>
+        </div>
+      )}
 
       {/* Chatbot Widget */}
       <ChatBot />

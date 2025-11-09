@@ -1,0 +1,21 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="128" height="128" rx="16" fill="#0D0D0D"/>
+  
+  <!-- Gradient circle -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0075FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3FFF8C;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Circle with gradient -->
+  <circle cx="64" cy="64" r="48" fill="url(#grad)" opacity="0.2"/>
+  
+  <!-- Text: ABS -->
+  <text x="64" y="75" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#3FFF8C" text-anchor="middle">ABS</text>
+  
+  <!-- Subtitle -->
+  <text x="64" y="105" font-family="Arial, sans-serif" font-size="10" fill="#0075FF" text-anchor="middle" letter-spacing="2">AGRI</text>
+</svg>
