@@ -143,6 +143,93 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Three Cards Section - With Background Image */}
+      <section className="relative py-20 px-4 overflow-hidden">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: 'url(/cards-background.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+
+        <div className="container max-w-5xl mx-auto relative z-10">
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Invest in Growth",
+                description: "Discover lucrative opportunities in the agricultural sector with our focus on grain production and investment strategies.",
+              },
+              {
+                title: "Maximize Returns",
+                description: "Capitalize on the high profitability potential of grain farms in Rio Grande do Sul, with projections indicating significant yield increases.",
+              },
+              {
+                title: "Secure Your Future",
+                description: "Engage with a resilient agricultural market that emphasizes both financial growth and sustainable practices.",
+              },
+            ].map((card, idx) => (
+              <div
+                key={idx}
+                className="p-8 rounded-lg bg-blue-600/40 backdrop-blur-sm border border-blue-400/30 hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 text-center"
+              >
+                <h3 className="text-2xl font-bold mb-4 text-white">
+                  {card.title}
+                </h3>
+                <p className="text-gray-100 leading-relaxed">
+                  {card.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Agribusiness Section */}
+      <section className="relative py-20 px-4 overflow-hidden">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: 'url(/grain-field-1.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+
+        <div className="container max-w-5xl mx-auto relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Text */}
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-1 h-32 bg-gradient-to-b from-blue-400 to-green-400" />
+                <div>
+                  <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                    agri Brazil success
+                  </h2>
+                  <p className="text-lg text-gray-100 leading-relaxed">
+                    agri Brazil success is not merely an investment opportunity; it's a gateway to a thriving agricultural community poised for exceptional growth. Our emphasis on high-quality grain production, combined with strategic insights into market trends, positions us as leaders in the agro-investment landscape. Whether you are a seasoned investor or new to the agricultural sector, we welcome you to join us in unlocking the vast potential of Rio Grande do Sul's grain market.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Side - Image */}
+            <div className="hidden md:block">
+              <img
+                src="/agribusiness-section.jpg"
+                alt="Agribusiness"
+                className="rounded-lg shadow-2xl shadow-accent/20"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* About Section - Dark Background */}
       <section id="about" className="py-20 px-4 bg-black/50">
         <div className="container max-w-4xl mx-auto">
@@ -201,7 +288,7 @@ export default function Home() {
           </div>
 
           {/* Video Grid */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
             {[
               {
                 title: "ABS - Agricultural Blockchain Solutions",
@@ -213,13 +300,18 @@ export default function Home() {
                 video: "/tokenization-video.mp4",
                 description: "Family farming tokenization strategies in Brazil.",
               },
+              {
+                title: "Tokenização de Fazendas - O Futuro da Agricultura",
+                video: "/fazendas-tokenization.mp4",
+                description: "Farm tokenization - the future of agriculture.",
+              },
             ].map((project, idx) => (
               <div
                 key={idx}
                 className="group relative overflow-hidden rounded-lg bg-card border border-border hover:border-accent/50 transition-all duration-300 cursor-pointer"
                 onClick={() => setSelectedVideo(project.video)}
               >
-                <div className="relative h-64 bg-muted overflow-hidden">
+                <div className="relative h-48 bg-muted overflow-hidden">
                   <video
                     src={project.video}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -229,7 +321,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2" style={{
+                  <h3 className="text-lg font-semibold mb-2" style={{
                     background: 'linear-gradient(to right, #0075FF, #3FFF8C)',
                     backgroundClip: 'text',
                     WebkitBackgroundClip: 'text',
@@ -237,7 +329,7 @@ export default function Home() {
                   }}>
                     {project.title}
                   </h3>
-                  <p className="text-muted-foreground">{project.description}</p>
+                  <p className="text-muted-foreground text-sm">{project.description}</p>
                 </div>
               </div>
             ))}
