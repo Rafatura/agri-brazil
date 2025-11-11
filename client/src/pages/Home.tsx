@@ -143,20 +143,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Three Cards Section - With Background Image */}
-      <section className="relative py-20 px-4 overflow-hidden">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: 'url(/cards-background.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-
-        <div className="container max-w-5xl mx-auto relative z-10">
+      {/* Three Cards Section */}
+      <section className="py-20 px-4">
+        <div className="container max-w-5xl mx-auto">
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
@@ -174,12 +163,17 @@ export default function Home() {
             ].map((card, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-lg bg-blue-600/40 backdrop-blur-sm border border-blue-400/30 hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 text-center"
+                className="p-8 rounded-lg bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 text-center"
               >
-                <h3 className="text-2xl font-bold mb-4 text-white">
+                <h3 className="text-2xl font-bold mb-4" style={{
+                  background: 'linear-gradient(to right, #0075FF, #3FFF8C)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}>
                   {card.title}
                 </h3>
-                <p className="text-gray-100 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   {card.description}
                 </p>
               </div>
@@ -376,37 +370,37 @@ export default function Home() {
                 name: "Sarah Johnson",
                 role: "Investor",
                 quote: "Investing with Agri Brazil Success transformed my portfolio. Their expertise and dedication to sustainable agriculture is unmatched.",
-                avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+                avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
               },
               {
                 name: "João Silva",
                 role: "Agricultural Entrepreneur",
                 quote: "The team's insights into grain market trends have been invaluable. I've seen significant returns on my investments.",
-                avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Joao",
+                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
               },
               {
                 name: "Maria Santos",
                 role: "Portfolio Manager",
                 quote: "Agri Brazil Success offers the perfect blend of growth potential and risk management. Highly recommended!",
-                avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Maria",
+                avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
               },
               {
                 name: "Carlos Oliveira",
                 role: "Investor",
                 quote: "The transparency and professionalism of this team is exceptional. My investment has grown beyond expectations.",
-                avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos",
+                avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
               },
               {
                 name: "Ana Costa",
                 role: "Financial Advisor",
                 quote: "I recommend Agri Brazil Success to all my clients seeking agricultural investment opportunities. Results speak for themselves.",
-                avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ana",
+                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
               },
               {
                 name: "Ricardo Ferreira",
                 role: "Investor",
                 quote: "The best decision I made was investing in agricultural assets through this platform. Consistent returns and great support.",
-                avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ricardo",
+                avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop",
               },
             ].map((testimonial, idx) => (
               <div
