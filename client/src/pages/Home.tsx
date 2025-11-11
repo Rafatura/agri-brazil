@@ -76,7 +76,7 @@ export default function Home() {
         ref={heroRef}
         className="min-h-screen flex items-center justify-center pt-20 px-4 relative overflow-hidden"
         style={{
-          backgroundImage: 'url(/hero-background-grain-field.webp)',
+          backgroundImage: 'url(/hero-wheat-field.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
@@ -353,6 +353,84 @@ export default function Home() {
                 />
                 <div className="p-4">
                   <h3 className="text-lg font-semibold text-accent">{item.title}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 px-4 bg-black/30">
+        <div className="container max-w-5xl mx-auto">
+          <div className="text-center space-y-6 mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold">What Our Investors Say</h2>
+            <p className="text-lg text-muted-foreground">
+              Hear from successful investors who have benefited from our agricultural investment opportunities
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Sarah Johnson",
+                role: "Investor",
+                quote: "Investing with Agri Brazil Success transformed my portfolio. Their expertise and dedication to sustainable agriculture is unmatched.",
+                avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+              },
+              {
+                name: "João Silva",
+                role: "Agricultural Entrepreneur",
+                quote: "The team's insights into grain market trends have been invaluable. I've seen significant returns on my investments.",
+                avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Joao",
+              },
+              {
+                name: "Maria Santos",
+                role: "Portfolio Manager",
+                quote: "Agri Brazil Success offers the perfect blend of growth potential and risk management. Highly recommended!",
+                avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Maria",
+              },
+              {
+                name: "Carlos Oliveira",
+                role: "Investor",
+                quote: "The transparency and professionalism of this team is exceptional. My investment has grown beyond expectations.",
+                avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos",
+              },
+              {
+                name: "Ana Costa",
+                role: "Financial Advisor",
+                quote: "I recommend Agri Brazil Success to all my clients seeking agricultural investment opportunities. Results speak for themselves.",
+                avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ana",
+              },
+              {
+                name: "Ricardo Ferreira",
+                role: "Investor",
+                quote: "The best decision I made was investing in agricultural assets through this platform. Consistent returns and great support.",
+                avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ricardo",
+              },
+            ].map((testimonial, idx) => (
+              <div
+                key={idx}
+                className="p-6 rounded-lg bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 flex flex-col"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full border-2 border-accent"
+                  />
+                  <div>
+                    <h3 className="font-semibold text-white">{testimonial.name}</h3>
+                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground italic flex-grow">
+                  "{testimonial.quote}"
+                </p>
+                <div className="flex gap-1 mt-4 text-accent">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i}>★</span>
+                  ))}
                 </div>
               </div>
             ))}
