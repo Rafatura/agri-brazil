@@ -107,8 +107,7 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-lg text-gray-200 max-w-2xl mx-auto">
-              Bringing the $2.7 Trillion Agricultural Market On-Chain. Tokenization of
-              agricultural assets for enhanced access and liquidity.
+              Bringing the $2.7 Trillion Agricultural Market On-Chain. The tokenization of agricultural assets facilitates access to investments and increases liquidity in the sector. RWA Marketplace Reshaping the Global Agricultural Industry.
             </p>
           </div>
 
@@ -330,11 +329,14 @@ export default function Home() {
           </div>
 
           {/* Image Gallery */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
+              { image: "/grain-field-1.png", title: "Grain Fields" },
+              { image: "/grain-field-2.png", title: "Agricultural Land" },
+              { image: "/farm-event.png", title: "Farm Event" },
               { image: "/corn-harvest.jpg", title: "Corn Harvest" },
               { image: "/soy-event.jpg", title: "Soy Event" },
-              { image: "/farm-event.png", title: "Farm Event" },
+              { image: "/agribusiness-section.jpg", title: "Agribusiness" },
             ].map((item, idx) => (
               <div
                 key={idx}
@@ -446,18 +448,16 @@ export default function Home() {
               Contact us for more information about investment opportunities.
             </p>
             <div className="space-y-4">
-              <div className="flex items-center justify-center gap-2 text-2xl font-semibold" style={{
-                background: 'linear-gradient(to right, #0075FF, #3FFF8C)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}>
-                <span>🇧🇷</span>
+              <div className="flex items-center justify-center gap-3 text-2xl font-semibold">
                 <a href={`https://wa.me/55${COMPANY_PHONE.replace(/\D/g, '')}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.946 1.347l-.355.203-.368-.056c-1.186-.164-2.292-.38-3.22-.787l.54 1.728c.577 1.335.92 2.622.926 3.93.007 3.909-3.118 7.701-8.142 7.701-.927 0-1.84-.1-2.718-.29l-.423-.056-.434.229c-1.179.622-2.188 1.655-2.773 2.779l-.12.252.031.267c.44 3.893 3.791 6.85 7.812 6.85 8.5 0 15.424-6.924 15.424-15.424 0-.929-.1-1.846-.29-2.735l-.057-.423.229-.434c1.068-2.007 1.9-4.41 1.9-7.01 0-7.547-6.131-13.677-13.677-13.677z"/>
-                  </svg>
-                  {COMPANY_PHONE}
+                  <img src="/brazil-flag.png" alt="Brazil" className="w-8 h-8 rounded-full" />
+                  <img src="/whatsapp-logo.jpg" alt="WhatsApp" className="w-8 h-8 rounded-full" />
+                  <span style={{
+                    background: 'linear-gradient(to right, #0075FF, #3FFF8C)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}>{COMPANY_PHONE}</span>
                 </a>
               </div>
               <div className="flex items-center justify-center gap-2 text-lg font-semibold" style={{
