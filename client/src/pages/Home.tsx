@@ -250,6 +250,18 @@ export default function Home() {
                 title: "Expert Guidance",
                 description: "Expert advice on maximizing returns and optimizing investments.",
               },
+              {
+                title: "Sustainability Initiatives",
+                description: "Support for eco-friendly practices and crop diversification.",
+              },
+              {
+                title: "Financial Planning",
+                description: "Comprehensive strategies for effective agricultural investment.",
+              },
+              {
+                title: "Networking Opportunities",
+                description: "Connect with industry experts and fellow investors.",
+              },
             ].map((item, idx) => (
               <div
                 key={idx}
@@ -336,7 +348,7 @@ export default function Home() {
               { image: "/farm-event.png", title: "Farm Event" },
               { image: "/corn-harvest.jpg", title: "Corn Harvest" },
               { image: "/soy-event.jpg", title: "Soy Event" },
-              { image: "/agribusiness-section.jpg", title: "Agribusiness" },
+              { image: "/aurora-harvest.jpg", title: "Aurora Harvest" },
             ].map((item, idx) => (
               <div
                 key={idx}
