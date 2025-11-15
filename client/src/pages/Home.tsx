@@ -38,7 +38,7 @@ export default function Home() {
       >
         <div className="container flex items-center justify-between py-4">
           <div className="flex items-center gap-3">
-            <img src={APP_LOGO} alt="Logo" className="w-10 h-10" />
+            <img src={APP_LOGO} alt="Logo" className="w-17 h-17" style={{ width: '70px', height: '70px' }} />
             <span className="font-bold text-lg hidden sm:inline">Agri Brazil Success</span>
           </div>
 
