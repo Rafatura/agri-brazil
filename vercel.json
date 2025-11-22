@@ -1,15 +1,31 @@
 {
   "buildCommand": "pnpm build",
-  "outputDirectory": "dist",
+  "outputDirectory": "dist/public",
   "framework": "other",
   "nodeVersion": "18.x",
   "env": {
     "NODE_ENV": "production"
   },
-  "rewrites": [
+  "headers": [
     {
       "source": "/(.*)",
-      "destination": "/api"
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
-  ]
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }
