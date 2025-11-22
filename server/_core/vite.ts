@@ -48,7 +48,8 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 export function serveStatic(app: Express) {
-  const distPath = path.resolve(import.meta.dirname, "../../../", "dist", "public");
+  // Use process.cwd() for production compatibility with Vercel
+  const distPath = path.resolve(process.cwd(), "dist", "public");
   if (!fs.existsSync(distPath)) {
     console.warn(
       `Warning: Could not find the build directory: ${distPath}. Make sure to run 'pnpm build' first.`
