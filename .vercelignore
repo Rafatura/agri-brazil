@@ -1,0 +1,12 @@
+.git
+.gitignore
+README.md
+node_modules
+.pnpm-store
+pnpm-lock.yaml
+client
+server
+drizzle
+shared
+patches
+.env.production
